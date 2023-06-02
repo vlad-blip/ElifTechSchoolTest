@@ -4,7 +4,7 @@ export default forwardRef(function Form(_, ref) {
   return (
     <form
       ref={ref}
-      className="flex flex-col gap-5 w-fit h-fit border-2 border-black rounded-md p-5"
+      className="flex flex-col gap-5 border-2 border-black rounded-md p-5"
     >
       <label className="flex gap-2 justify-between items-center">
         Name:

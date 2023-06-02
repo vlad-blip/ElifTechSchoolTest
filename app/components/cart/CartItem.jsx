@@ -29,7 +29,7 @@ export default function CartItem({
   };
 
   return (
-    <div className="flex bg-white border-2 rounded-md overflow-hidden">
+    <div className="flex bg-white border-2 rounded-xl overflow-hidden">
       <Image
         className="basis-1/2"
         src={image}
