@@ -6,7 +6,6 @@ import Shop from "./Shop";
 export default function ShopsList() {
   const [shops, setShops] = useState([]);
   const [selected, setSelected] = useState("");
-  console.log("Shop list");
 
   useEffect(() => {
     async function getShops() {
