@@ -6,7 +6,6 @@ import { fetchProductByShop } from "@/store/productSlice";
 
 export default function Shop({ title, _id, selected, disabled, onSelect }) {
   const dispatch = useDispatch();
-  console.log(disabled);
 
   const selectShop = useCallback(() => {
     dispatch(fetchProductByShop(title));
@@ -17,7 +16,7 @@ export default function Shop({ title, _id, selected, disabled, onSelect }) {
     <button
       className={`${
         selected ? "outline" : ""
-      } bg-blue-300 px-10 py-5 w-full rounded-md text-xl`}
+      } bg-blue-300 px-10 py-5 w-full rounded-md text-xl disabled:bg-blue-200`}
       onClick={selectShop}
       disabled={disabled}
     >
