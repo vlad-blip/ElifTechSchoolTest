@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Form from "../components/form/Form";
 import Cart from "../components/cart/Cart";
+import Map from "../components/map/Map";
 
 export default function CartPage() {
   const formRef = useRef();
@@ -42,6 +43,7 @@ export default function CartPage() {
   return (
     <main className="grid grid-cols-2 gap-10 h-full">
       <div className="bg-blue-100 rounded-xl grid place-content-center">
+        <Map />
         <Form ref={formRef} />
       </div>
       <div className="bg-blue-100 rounded-xl p-20">
