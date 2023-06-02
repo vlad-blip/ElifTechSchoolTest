@@ -1,9 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState = JSON.parse(localStorage.getItem("cart")) || {
   entities: [],
   totalPrice: 0,
 };
+
+export const addCoupon = createAsyncThunk(
+  "coupon/validate",
+  async (couponName) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/coupon/${couponName}`
+      );
+
+      if (response.status === 200) {
+        const data = await response.json();
+        return data;
+      } else {
+        const err = await response.text();
+        throw new Error(err);
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -43,6 +64,24 @@ const cartSlice = createSlice({
         state.totalPrice -= existingItem.totalPrice;
       }
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(addCoupon.rejected, (state, action) => {
+      alert(action.error.message);
+    });
+    builder.addCase(addCoupon.fulfilled, (state, action) => {
+      const { discount } = action.payload;
+
+      if (state.totalPrice === 0) {
+        alert("It can't be even cheeper!");
+      } else if (discount >= state.totalPrice) {
+        state.totalPrice = 0;
+        alert("Discount applied! Now it's completely free.");
+      } else {
+        state.totalPrice -= discount;
+        alert("Discount applied!");
+      }
+    });
   },
 });
 
