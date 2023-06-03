@@ -9,7 +9,9 @@ export default function CouponsList() {
   useEffect(() => {
     async function fetchCoupons() {
       try {
-        const response = await fetch("http://localhost:5000/coupons");
+        const response = await fetch(
+          "https://eliftech-qkyz.onrender.com/coupons"
+        );
 
         const data = await response.json();
         setCouponsList(data);

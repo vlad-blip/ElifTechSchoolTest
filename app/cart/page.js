@@ -20,16 +20,19 @@ export default function CartPage() {
 
     async function sendOrder() {
       try {
-        const response = await fetch("http://localhost:5000/order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            credentials,
-            cart,
-          }),
-        });
+        const response = await fetch(
+          "https://eliftech-qkyz.onrender.com/order",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              credentials,
+              cart,
+            }),
+          }
+        );
         const data = await response.text();
 
         alert(data);

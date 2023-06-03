@@ -9,7 +9,7 @@ export const fetchProductByShop = createAsyncThunk(
   "product/fetchByShop",
   async (shop) => {
     const response = await fetch(
-      `http://localhost:5000/shops/${shop}/products`
+      `https://eliftech-qkyz.onrender.com/shops/${shop}/products`
     );
 
     return response.json();

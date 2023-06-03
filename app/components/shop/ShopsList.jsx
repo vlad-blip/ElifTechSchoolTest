@@ -9,7 +9,7 @@ export default function ShopsList() {
 
   useEffect(() => {
     async function getShops() {
-      const response = await fetch("http://localhost:5000/shops");
+      const response = await fetch("https://eliftech-qkyz.onrender.com/shops");
       const shops = await response.json();
 
       setShops(shops);

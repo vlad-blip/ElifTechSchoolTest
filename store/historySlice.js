@@ -4,13 +4,16 @@ export const fetchHistory = createAsyncThunk(
   "history/fetchHistory",
   async ({ email, phone }) => {
     try {
-      const response = await fetch("http://localhost:5000/history", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ email, phone }),
-      });
+      const response = await fetch(
+        "https://eliftech-qkyz.onrender.com/history",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ email, phone }),
+        }
+      );
 
       if (response.status === 200) {
         const data = await response.json();

@@ -11,7 +11,7 @@ export const addCoupon = createAsyncThunk(
   async (couponName) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/coupons/${couponName}`
+        `https://eliftech-qkyz.onrender.com/coupons/${couponName}`
       );
 
       if (response.status === 200) {
