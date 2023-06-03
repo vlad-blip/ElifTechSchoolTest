@@ -49,7 +49,7 @@ export default function CartPage() {
         <Map />
         <Form ref={formRef} className="mt-4" />
       </div>
-      <div className="bg-blue-100 rounded-xl p-20">
+      <div className="bg-blue-100 rounded-xl p-10">
         <Cart onSubmit={onSubmitHandler} />
       </div>
     </main>
