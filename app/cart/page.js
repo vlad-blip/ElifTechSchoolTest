@@ -44,7 +44,7 @@ export default function CartPage() {
     <main className="grid grid-cols-2 gap-10 h-full">
       <div className="bg-blue-100 rounded-xl grid place-content-center">
         <Map />
-        <Form ref={formRef} />
+        <Form ref={formRef} className="mt-4" />
       </div>
       <div className="bg-blue-100 rounded-xl p-20">
         <Cart onSubmit={onSubmitHandler} />
