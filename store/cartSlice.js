@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const initialState = JSON.parse(localStorage.getItem("cart")) || {
+const initialState = {
   entities: [],
+  discounted: false,
   totalPrice: 0,
 };
 
@@ -10,7 +11,7 @@ export const addCoupon = createAsyncThunk(
   async (couponName) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/coupon/${couponName}`
+        `http://localhost:5000/coupons/${couponName}`
       );
 
       if (response.status === 200) {
@@ -63,6 +64,10 @@ const cartSlice = createSlice({
         );
         state.totalPrice -= existingItem.totalPrice;
       }
+
+      if (state.totalPrice < 0) {
+        state.totalPrice = 0;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -72,12 +77,29 @@ const cartSlice = createSlice({
     builder.addCase(addCoupon.fulfilled, (state, action) => {
       const { discount } = action.payload;
 
+      if (state.discounted && state.entities.length === 0) {
+        state.discounted = false;
+      }
+
+      if (state.discounted) {
+        alert("You've already applied a discount!");
+
+        return state;
+      }
+
+      if (state.entities.length == 0) {
+        alert("You need to add items first before discounting!");
+
+        return state;
+      }
       if (state.totalPrice === 0) {
         alert("It can't be even cheeper!");
       } else if (discount >= state.totalPrice) {
         state.totalPrice = 0;
+        state.discounted = true;
         alert("Discount applied! Now it's completely free.");
       } else {
+        state.discounted = true;
         state.totalPrice -= discount;
         alert("Discount applied!");
       }
