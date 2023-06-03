@@ -27,6 +27,36 @@ export const addCoupon = createAsyncThunk(
   }
 );
 
+export const sendOrder = createAsyncThunk(
+  "order/send",
+  async (credentials, thunkAPI) => {
+    const cart = thunkAPI.getState().cart;
+
+    try {
+      const response = await fetch("https://eliftech-qkyz.onrender.com/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          credentials,
+          cart,
+        }),
+      });
+
+      if (response.status === 200) {
+        const data = await response.text();
+        return data;
+      } else {
+        const err = await response.text();
+        throw new Error(err);
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -71,6 +101,13 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(sendOrder.rejected, (state, action) => {
+      alert(action.error.message);
+    });
+    builder.addCase(sendOrder.fulfilled, (state, action) => {
+      alert(action.payload);
+      return initialState;
+    });
     builder.addCase(addCoupon.rejected, (state, action) => {
       alert(action.error.message);
     });
