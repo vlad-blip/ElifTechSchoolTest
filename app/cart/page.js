@@ -1,14 +1,19 @@
 "use client";
 
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+
+import { sendOrder } from "@/store/cartSlice";
 import Form from "../components/form/Form";
 import Cart from "../components/cart/Cart";
 import Map from "../components/map/Map";
 
 export default function CartPage() {
+  const dispatch = useDispatch();
+
   const formRef = useRef();
 
-  const onSubmitHandler = (cart) => {
+  const onSubmitHandler = () => {
     const form = formRef.current;
 
     const credentials = {
@@ -17,31 +22,7 @@ export default function CartPage() {
       phone: form.phone.value,
       address: form.address.value,
     };
-
-    async function sendOrder() {
-      try {
-        const response = await fetch(
-          "https://eliftech-qkyz.onrender.com/order",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              credentials,
-              cart,
-            }),
-          }
-        );
-        const data = await response.text();
-
-        alert(data);
-      } catch (err) {
-        alert(err);
-      }
-    }
-
-    sendOrder();
+    dispatch(sendOrder(credentials));
   };
   return (
     <main className="grid grid-cols-2 gap-10 h-full">
