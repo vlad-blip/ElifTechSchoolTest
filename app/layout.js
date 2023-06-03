@@ -10,11 +10,6 @@ import { store, persistor } from "@/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Eliftechschool test assignment",
-  description: "Online shop",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
