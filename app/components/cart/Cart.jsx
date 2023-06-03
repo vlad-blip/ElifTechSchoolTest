@@ -25,12 +25,12 @@ export default function Cart({ onSubmit }) {
         <div className="rounded-md overflow-hidden">
           <input
             ref={couponRef}
-            className="py-5 px-2"
+            className="py-5 px-2 text-xl"
             type="text"
             placeholder="Coupon code"
           />
           <button
-            className="bg-black text-white py-5 px-2"
+            className="bg-black text-white py-5 text-xl px-4"
             onClick={addCouponHandler}
           >
             Apply

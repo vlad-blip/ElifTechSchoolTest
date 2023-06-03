@@ -10,8 +10,8 @@ export default function OrderItem({
   return (
     <div className="bg-white rounded-xl overflow-hidden flex items-center gap-10">
       <Image
-        className=""
-        src={image}
+        className="h-28 object-cover"
+        src={`/images/${image}`}
         width={200}
         height={100}
         alt={`${title} image`}

@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 
-export default forwardRef(function Form(_, ref) {
+export default forwardRef(function Form({ className = "" }, ref) {
   return (
     <form
       ref={ref}
-      className="flex flex-col gap-5 border-2 border-black rounded-md p-5"
+      className={`flex flex-col gap-5 border-2 border-black rounded-md p-5 ${className}`}
     >
       <label className="flex gap-2 justify-between items-center">
         Name:
@@ -13,6 +13,7 @@ export default forwardRef(function Form(_, ref) {
           className="p-2 rounded-md"
           type="text"
           placeholder="Write your name"
+          required
         />
       </label>
       <label className="flex gap-2 justify-between items-center">
@@ -22,6 +23,7 @@ export default forwardRef(function Form(_, ref) {
           className="p-2 rounded-md"
           type="email"
           placeholder="Write your email"
+          required
         />
       </label>
       <label className="flex gap-2 justify-between items-center">
@@ -30,7 +32,9 @@ export default forwardRef(function Form(_, ref) {
           name="phone"
           className="p-2 rounded-md"
           type="tel"
+          pattern="[0-9]+"
           placeholder="Write your phone"
+          required
         />
       </label>
       <label className="flex gap-2 justify-between items-center">
@@ -40,6 +44,7 @@ export default forwardRef(function Form(_, ref) {
           className="p-2 rounded-md"
           type="text"
           placeholder="Write your address"
+          required
         />
       </label>
     </form>

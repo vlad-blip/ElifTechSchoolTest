@@ -31,16 +31,16 @@ export default function CartItem({
   return (
     <div className="flex bg-white border-2 rounded-xl overflow-hidden">
       <Image
-        className="basis-1/2"
-        src={image}
+        className="basis-1/2 h-52 object-cover"
+        src={`/images/${image}`}
         width={200}
         height={100}
         alt={`${title} image`}
       />
       <div className="flex flex-col justify-between py-10 pl-6">
         <div>
-          <p className="text-3xl">{title}</p>
-          <p className="text-xl">
+          <h3 className="text-3xl">{title}</h3>
+          <p className="text-xl mb-5">
             Price: <span className="font-bold">{price}</span> Total price:{" "}
             <span className="font-bold">{totalPrice}</span>
           </p>
