@@ -14,6 +14,9 @@ export default function Header() {
           <li>
             <NavButton href={"/history"}>Order history</NavButton>
           </li>
+          <li>
+            <NavButton href={"/coupons"}>Coupons</NavButton>
+          </li>
         </ul>
       </nav>
     </header>
