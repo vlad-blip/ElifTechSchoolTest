@@ -18,7 +18,7 @@ export default function Cart({ onSubmit }) {
   return (
     <div className="flex flex-col justify-between gap-4">
       <CartList />
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-4">
         <p className="text-3xl">
           Total price: <span className="font-bold">{cart.totalPrice}</span>
         </p>
