@@ -31,6 +31,7 @@ export default function HistoryForm() {
           className="p-2 rounded-md"
           type="email"
           placeholder="Write your email"
+          required
         />
       </label>
       <label className="flex gap-2 justify-between items-center">
@@ -41,6 +42,7 @@ export default function HistoryForm() {
           type="tel"
           pattern="[0-9]+"
           placeholder="Write your phone"
+          required
         />
       </label>
       <button
