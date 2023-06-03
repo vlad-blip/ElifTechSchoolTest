@@ -10,7 +10,7 @@ export default function History() {
 
   return (
     <main className="h-full grid grid-rows-3 gap-y-4">
-      <div className="flex flex-col items-center pt-10 bg-blue-100 row-span-1 rounded-xl">
+      <div className="flex flex-col items-center pt-5 bg-blue-100 row-span-1 rounded-xl">
         <h1 className="text-4xl mb-4">Look up your order history</h1>
         <HistoryForm />
       </div>
